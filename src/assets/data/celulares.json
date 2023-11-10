@@ -1,0 +1,184 @@
+{
+  "modelos_celulares": [
+    {
+      "id": 1,
+      "marca": "Samsung",
+      "modelo": "Galaxy S21",
+      "lanzamiento": 2021,
+      "pantalla": {
+        "tipo": "AMOLED",
+        "tamano": 6.2
+      },
+      "camara_principal": {
+        "resolucion": "12 MP",
+        "apertura": "f/1.8"
+      },
+      "bateria": 4000,
+      "almacenamiento": 128,
+      "precio": 799.99,
+      "imagen_url": "https://m.media-amazon.com/images/I/61jYjeuNUnL._AC_SL1000_.jpg"
+    },
+    {
+      "id": 2,
+      "marca": "Apple",
+      "modelo": "iPhone 13",
+      "lanzamiento": 2021,
+      "pantalla": {
+        "tipo": "Super Retina XDR",
+        "tamano": 6.1
+      },
+      "camara_principal": {
+        "resolucion": "12 MP",
+        "apertura": "f/1.6"
+      },
+      "bateria": 3095,
+      "almacenamiento": 128,
+      "precio": 899.99,
+      "imagen_url": "https://http2.mlstatic.com/D_NQ_NP_708511-MLA47777566757_102021-O.webp"
+    },
+    {
+      "id": 3,
+      "marca": "OnePlus",
+      "modelo": "9 Pro",
+      "lanzamiento": 2021,
+      "pantalla": {
+        "tipo": "Fluid AMOLED",
+        "tamano": 6.7
+      },
+      "camara_principal": {
+        "resolucion": "48 MP",
+        "apertura": "f/1.8"
+      },
+      "bateria": 4500,
+      "almacenamiento": 256,
+      "precio": 999.99,
+      "imagen_url": "https://http2.mlstatic.com/D_NQ_NP_750970-MLA47529473800_092021-O.webp"
+    },
+    {
+      "id": 4,
+      "marca": "Xiaomi",
+      "modelo": "Mi 11",
+      "lanzamiento": 2020,
+      "pantalla": {
+        "tipo": "AMOLED",
+        "tamano": 6.81
+      },
+      "camara_principal": {
+        "resolucion": "108 MP",
+        "apertura": "f/1.9"
+      },
+      "bateria": 4600,
+      "almacenamiento": 128,
+      "precio": 699.99,
+      "imagen_url": "https://http2.mlstatic.com/D_NQ_NP_898443-MLA46928549455_072021-O.webp"
+    },
+    {
+      "id": 5,
+      "marca": "Google",
+      "modelo": "Pixel 6",
+      "lanzamiento": 2021,
+      "pantalla": {
+        "tipo": "OLED",
+        "tamano": 6.4
+      },
+      "camara_principal": {
+        "resolucion": "50 MP",
+        "apertura": "f/1.9"
+      },
+      "bateria": 4600,
+      "almacenamiento": 128,
+      "precio": 799.99,
+      "imagen_url": "https://www.designinfo.in/wp-content/uploads/nc/p/5/5/1/7/3/55173-optimized.jpg"
+    },
+    {
+      "id": 6,
+      "marca": "Huawei",
+      "modelo": "P40 Pro",
+      "lanzamiento": 2020,
+      "pantalla": {
+        "tipo": "OLED",
+        "tamano": 6.58
+      },
+      "camara_principal": {
+        "resolucion": "50 MP",
+        "apertura": "f/1.9"
+      },
+      "bateria": 4200,
+      "almacenamiento": 256,
+      "precio": 899.99,
+      "imagen_url": "https://http2.mlstatic.com/D_NQ_NP_616169-MLA42513968287_072020-O.webp"
+    },
+    {
+      "id": 7,
+      "marca": "Sony",
+      "modelo": "Xperia 1 III",
+      "lanzamiento": 2021,
+      "pantalla": {
+        "tipo": "OLED",
+        "tamano": 6.5
+      },
+      "camara_principal": {
+        "resolucion": "12 MP",
+        "apertura": "f/1.7"
+      },
+      "bateria": 4500,
+      "almacenamiento": 256,
+      "precio": 1099.99,
+      "imagen_url": "https://m.media-amazon.com/images/I/71YvGj855+L._AC_UF894,1000_QL80_.jpg"
+    },
+    {
+      "id": 8,
+      "marca": "Motorola",
+      "modelo": "Moto G Power",
+      "lanzamiento": 2021,
+      "pantalla": {
+        "tipo": "IPS LCD",
+        "tamano": 6.6
+      },
+      "camara_principal": {
+        "resolucion": "48 MP",
+        "apertura": "f/1.7"
+      },
+      "bateria": 5000,
+      "almacenamiento": 64,
+      "precio": 249.99,
+      "imagen_url": "https://ss632.liverpool.com.mx/xl/1130395836.jpg"
+    },
+    {
+      "id": 9,
+      "marca": "LG",
+      "modelo": "Velvet",
+      "lanzamiento": 2020,
+      "pantalla": {
+        "tipo": "OLED",
+        "tamano": 6.8
+      },
+      "camara_principal": {
+        "resolucion": "48 MP",
+        "apertura": "f/1.8"
+      },
+      "bateria": 4300,
+      "almacenamiento": 128,
+      "precio": 599.99,
+      "imagen_url": "https://m.media-amazon.com/images/I/41HlFkuBitL._AC_UF894,1000_QL80_.jpg"
+    },
+    {
+      "id": 10,
+      "marca": "Nokia",
+      "modelo": "9 PureView",
+      "lanzamiento": 2019,
+      "pantalla": {
+        "tipo": "P-OLED",
+        "tamano": 5.99
+      },
+      "camara_principal": {
+        "resolucion": "12 MP",
+        "apertura": "f/1.8"
+      },
+      "bateria": 3320,
+      "almacenamiento": 128,
+      "precio": 499.99,
+      "imagen_url": "https://elrincondechina.com/wp-content/uploads/2019/02/nokia_9_pureview-specs_popup-desktop.png"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+<div class="container mt-4">
+    <div class="row">
+      <div *ngFor="let celular of dataCelulares" class="col-md-3 mb-4">
+        <div class="card border-secondary" style="max-width: 20rem;">
+          <div class="card-header">{{ celular.marca }}</div>
+          <div class="card-body">
+            <h4 class="card-title">{{ celular.modelo }}</h4>
+            <p class="card-text">Precio: ${{ celular.precio }}</p>
+            <img [src]="celular.imagen_url" class="card-img-top img-fluid" style="width: 100%; height: 300px;" alt="{{ celular.modelo }}">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
