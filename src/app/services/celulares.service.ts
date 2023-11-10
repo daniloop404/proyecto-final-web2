@@ -17,7 +17,10 @@ export class CelularesService {
   getCelulares() : Observable <any>{
     return this.http.get(this.API_CELULARES)
   }
-
+  getCelularPorId(id: number): Observable<any> {
+    const url = `${this.API_CELULARES}/${id}`;
+    return this.http.get(url);
+  }
 
 
 }

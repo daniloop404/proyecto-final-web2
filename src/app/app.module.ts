@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { ProductosComponent } from './screens/productos/productos.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { DetalleProductoComponent } from './components/detalle-producto/detalle-producto.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductosComponent,
     NavBarComponent,
-    FooterComponent
+    FooterComponent,
+    DetalleProductoComponent
   ],
   imports: [
     FormsModule,
