@@ -10,6 +10,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { DetalleProductoComponent } from './components/detalle-producto/detalle-producto.component';
 import { HomeComponent } from './screens/home/home.component';
 import { NosotrosComponent } from './screens/nosotros/nosotros.component';
+import { CarritoComprasComponent } from './screens/carrito-compras/carrito-compras.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NosotrosComponent } from './screens/nosotros/nosotros.component';
     FooterComponent,
     DetalleProductoComponent,
     HomeComponent,
-    NosotrosComponent
+    NosotrosComponent,
+    CarritoComprasComponent
   ],
   imports: [
     FormsModule,
