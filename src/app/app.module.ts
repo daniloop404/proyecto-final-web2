@@ -8,6 +8,7 @@ import { ProductosComponent } from './screens/productos/productos.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DetalleProductoComponent } from './components/detalle-producto/detalle-producto.component';
+import { CarritoComprasComponent } from './screens/carrito-compras/carrito-compras.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { DetalleProductoComponent } from './components/detalle-producto/detalle-
     ProductosComponent,
     NavBarComponent,
     FooterComponent,
-    DetalleProductoComponent
+    DetalleProductoComponent,
+    CarritoComprasComponent
   ],
   imports: [
     FormsModule,
