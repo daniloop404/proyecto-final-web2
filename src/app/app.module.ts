@@ -8,6 +8,8 @@ import { ProductosComponent } from './screens/productos/productos.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DetalleProductoComponent } from './components/detalle-producto/detalle-producto.component';
+import { HomeComponent } from './screens/home/home.component';
+import { NosotrosComponent } from './screens/nosotros/nosotros.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { DetalleProductoComponent } from './components/detalle-producto/detalle-
     ProductosComponent,
     NavBarComponent,
     FooterComponent,
-    DetalleProductoComponent
+    DetalleProductoComponent,
+    HomeComponent,
+    NosotrosComponent
   ],
   imports: [
     FormsModule,
