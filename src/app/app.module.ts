@@ -11,6 +11,8 @@ import { DetalleProductoComponent } from './components/detalle-producto/detalle-
 import { HomeComponent } from './screens/home/home.component';
 import { NosotrosComponent } from './screens/nosotros/nosotros.component';
 import { CarritoComprasComponent } from './screens/carrito-compras/carrito-compras.component';
+import { TerminosCondicionesComponent } from './screens/terminos-condiciones/terminos-condiciones.component';
+import { FacturaComponent } from './screens/factura/factura.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { CarritoComprasComponent } from './screens/carrito-compras/carrito-compr
     DetalleProductoComponent,
     HomeComponent,
     NosotrosComponent,
-    CarritoComprasComponent
+    CarritoComprasComponent,
+    TerminosCondicionesComponent,
+    FacturaComponent
   ],
   imports: [
     FormsModule,

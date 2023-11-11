@@ -5,6 +5,8 @@ import { DetalleProductoComponent } from './components/detalle-producto/detalle-
 import { CarritoComprasComponent } from './screens/carrito-compras/carrito-compras.component';
 import { HomeComponent } from './screens/home/home.component';
 import { NosotrosComponent } from './screens/nosotros/nosotros.component';
+import { TerminosCondicionesComponent } from './screens/terminos-condiciones/terminos-condiciones.component';
+import { FacturaComponent } from './screens/factura/factura.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -12,6 +14,8 @@ const routes: Routes = [
   {path: 'productos', component:ProductosComponent},
   {path: 'detalleProducto/:id', component:DetalleProductoComponent},
   { path: 'carritocompras', component: CarritoComprasComponent },
+  {path: 'terminos-condiciones', component: TerminosCondicionesComponent},
+  {path: 'factura', component: FacturaComponent}
 ];
 
 @NgModule({
