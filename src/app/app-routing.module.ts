@@ -15,10 +15,10 @@ const routes: Routes = [
   {path: 'productos', component:ProductosComponent},
   {path: 'detalleProducto/:id', component:DetalleProductoComponent},
   { path: 'carritocompras', component: CarritoComprasComponent },
-
-  {path:'**', component: Error404Component},
   {path: 'terminos-condiciones', component: TerminosCondicionesComponent},
-  {path: 'factura', component: FacturaComponent}
+  {path: 'factura', component: FacturaComponent},
+
+  {path:'**', component: Error404Component}
 ];
 
 @NgModule({
