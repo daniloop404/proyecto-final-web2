@@ -12,6 +12,8 @@ import { HomeComponent } from './screens/home/home.component';
 import { NosotrosComponent } from './screens/nosotros/nosotros.component';
 import { CarritoComprasComponent } from './screens/carrito-compras/carrito-compras.component';
 import { Error404Component } from './screens/error404/error404.component';
+import { TerminosCondicionesComponent } from './screens/terminos-condiciones/terminos-condiciones.component';
+import { FacturaComponent } from './screens/factura/factura.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { Error404Component } from './screens/error404/error404.component';
     HomeComponent,
     NosotrosComponent,
     CarritoComprasComponent,
-    Error404Component
+    Error404Component,
+    TerminosCondicionesComponent,
+    FacturaComponent
   ],
   imports: [
     FormsModule,
