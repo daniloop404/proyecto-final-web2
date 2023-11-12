@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "app-web-2-d5607": {
+      "hosting": {
+        "proyecto-final-web2": [
+          "app-web-2-d5607"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "app-web-2-d5607"
+  }
+}
