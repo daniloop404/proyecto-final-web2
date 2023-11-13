@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CelularesService } from 'src/app/services/celulares.service';
+import { Router } from '@angular/router'; // Import Router
 
 @Component({
   selector: 'app-administracion',
@@ -7,12 +8,37 @@ import { CelularesService } from 'src/app/services/celulares.service';
   styleUrls: ['./administracion.component.css']
 })
 export class AdministracionComponent {
-  constructor(private servicio: CelularesService){}
-   dataCelulares: any;
+  celularKey: string | null = null; // Define celularKey here
+  dataCelulares: { [key: string]: any }[] = [];
+  confirmar: boolean = false;
+  constructor(private servicio: CelularesService, private router: Router) {}
 
-  ngOnInit(){
-    this.servicio.getCelulares().subscribe(datos=>{
-      this.dataCelulares=datos;
-    })
+  confirmarEliminar() {
+    this.confirmar = !this.confirmar;
+  }
+
+  ngOnInit() {
+    this.servicio.getCelulares().subscribe((datos: Record<string, any>) => {
+      this.dataCelulares = Object.entries(datos).map(([key, value]) => ({ key, ...value }));
+    });
+  }
+
+  onDelete(celularKey: string | null): void {
+    if (celularKey) {
+      this.servicio.deleteCelular(celularKey).subscribe(
+        (response) => {
+          console.log('Celular deleted successfully:', response);
+          // Add any additional logic or redirection after a successful delete
+          window.location.reload();
+        },
+        (error) => {
+          console.error('Error deleting celular:', error);
+          // Handle error
+        }
+      );
+    } else {
+      console.warn('Cannot delete, celularKey is null.');
+      // Handle the case where celularKey is null
+    }
   }
 }

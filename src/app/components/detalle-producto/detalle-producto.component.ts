@@ -1,26 +1,25 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { CelularesService } from 'src/app/services/celulares.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-detalle-producto',
   templateUrl: './detalle-producto.component.html',
   styleUrls: ['./detalle-producto.component.css']
 })
-export class DetalleProductoComponent {
+export class DetalleProductoComponent implements OnInit {
 
-  constructor(private servicio: CelularesService, private activatedRoute:ActivatedRoute){}
-
-  dataCelulares: any;
   celular: any;
-  
+
+  constructor(private celularesService: CelularesService, private route: ActivatedRoute) { }
+
   ngOnInit() {
-    this.activatedRoute.params.subscribe(params => {
-        const celularId = +params['id'];
-        this.servicio.getCelularPorId(celularId).subscribe((celular: any) => {
-          this.celular = celular;
-        });
-      
-    });
+    const key = this.route.snapshot.paramMap.get('key');
+    if (key) {
+      this.celularesService.getCelularPorId(key).subscribe(celular => {
+        this.celular = celular;
+      });
+    }
   }
+
 }

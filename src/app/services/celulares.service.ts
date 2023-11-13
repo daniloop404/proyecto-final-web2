@@ -18,10 +18,26 @@ export class CelularesService {
     const url = `${this.API_CELULARES}.${"json"}`;
     return this.http.get(url)
   }
-  getCelularPorId(id: number): Observable<any> {
-    const url = `${this.API_CELULARES}/${id-1}.json`;
+  //METODO PARA OBTENER UNA COLECCION POR ID
+  getCelularPorId(key: string): Observable<any> {
+    const url = `${this.API_CELULARES}/${key}.json`;
     return this.http.get(url);
   }
+  //METODO POST
+  postCelular(nuevoCelular: any): Observable<any> {
+    const url = `${this.API_CELULARES}.json`;
+    return this.http.post(url, nuevoCelular);
+  }
+  //METODO UPDATE
+  updateCelular(key: string, updatedCelular: any): Observable<any> {
+    const url = `${this.API_CELULARES}/${key}.json`;
+    return this.http.put(url, updatedCelular);
+  }
+  deleteCelular(key: string): Observable<any> {
+    const url = `${this.API_CELULARES}/${key}.json`;
+    return this.http.delete(url);
+  }
+
 
 
 }

@@ -1,18 +1,21 @@
+<div class="container mt-4 text-center">
+<h2>Nuestra seleccion de productos</h2>
+</div>
 <div class="container mt-4">
-    <div class="row">
-      <div *ngFor="let celular of dataCelulares" class="col-md-3 mb-4">
-        <div class="card border-secondary" style="max-width: 20rem;">
-          <div class="card-header">{{ celular.marca }}</div>
-          <div class="card-body">
-            <h4 class="card-title">{{ celular.modelo }}</h4>
-            <p class="card-text">Precio: ${{ celular.precio }}</p>
-            <img [src]="celular.imagen_url" class="card-img-top img-fluid" style="width: 100%; height: 300px;" alt="{{ celular.modelo }}">
-            <div class="container text-center mt-4">
-                <a [routerLink]="['/detalleProducto', celular.id]" class="btn btn-primary">Detalles</a>
-            </div>
-            
+  <div class="row">
+    <div *ngFor="let celular of dataCelulares; let i = index" class="col-md-3 mb-4">
+      <div class="card border-secondary" style="max-width: 20rem;">
+        <div class="card-header">{{ celular['marca'] }}</div>
+        <div class="card-body">
+          <h4 class="card-title">{{ celular['modelo'] }}</h4>
+          <p class="card-text">Precio: ${{ celular['precio'] }}</p>
+          <img [src]="celular['imagen_url']" class="card-img-top img-fluid" style="width: 100%; height: 300px;" alt="{{ celular['modelo'] }}">
+          <div class="container text-center mt-4">
+            <!-- Use 'key' property for routerLink -->
+            <a [routerLink]="['/detalleProducto', celular['key']]" class="btn btn-primary">Detalles</a>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>

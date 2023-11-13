@@ -1,7 +1,7 @@
 <div class="container mt-4">
   <h2 class="text-center mb-4">Administrar los Productos</h2>
   <div class="text-center mt-4">
-    <button class="btn btn-success">Agregar</button>
+    <button [routerLink]="['/formularioCelular']"class="btn btn-success">Agregar</button>
   </div>
   <table class="table">
     <thead class="text-center">
@@ -15,16 +15,24 @@
     </thead>
     <tbody>
       <tr *ngFor="let celular of dataCelulares" class="text-center">
-        <td class="align-middle">{{ celular.marca }}</td>
-        <td class="align-middle">{{ celular.modelo }}</td>
-        <td class="align-middle">${{ celular.precio }}</td>
+        <td class="align-middle">{{ celular['marca'] }}</td>
+        <td class="align-middle">{{ celular['modelo'] }}</td>
+        <td class="align-middle">${{ celular['precio'] }}</td>
         <td>
-          <img [src]="celular.imagen_url" class="img-fluid" style="max-width: 100px; max-height: 100px;" alt="{{ celular.modelo }}">
+          <img [src]="celular['imagen_url']" class="img-fluid" style="max-width: 100px; max-height: 100px;" alt="{{ celular['modelo'] }}">
         </td>
         <td class="align-middle">
           <div class="text-center">
-            <button class="btn btn-danger me-2">Eliminar</button>
-            <button [routerLink]="['/modificarProducto', celular.id]" class="btn btn-warning">Modificar</button>
+            <ng-container *ngIf="!confirmar; else confirmacion">
+              <button class="btn btn-danger me-2" (click)="confirmarEliminar()">Eliminar</button>
+              <button [routerLink]="['/formularioCelular', celular['key']]" class="btn btn-warning">Modificar</button>
+            </ng-container>
+            <ng-template #confirmacion>
+              <button (click)="onDelete(celular['key'])" class="btn btn-danger me-2">Confirmar</button>
+              <button (click)="confirmarEliminar()" class="btn btn-success me-2">Cancelar</button>
+            </ng-template>
+            
+            
           </div>
         </td>
       </tr>

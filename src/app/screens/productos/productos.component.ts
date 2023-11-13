@@ -8,12 +8,11 @@ import { CelularesService } from 'src/app/services/celulares.service';
 })
 export class ProductosComponent {
   constructor(private servicio: CelularesService){}
-
-  dataCelulares: any;
-
-  ngOnInit(){
-    this.servicio.getCelulares().subscribe(datos=>{
-      this.dataCelulares=datos;
-    })
+  dataCelulares: { [key: string]: any }[] = [];
+  
+  ngOnInit() {
+    this.servicio.getCelulares().subscribe((datos: Record<string, any>) => {
+      this.dataCelulares = Object.entries(datos).map(([key, value]) => ({ key, ...value }));
+    });
   }
 }

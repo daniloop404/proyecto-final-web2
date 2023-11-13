@@ -13,6 +13,7 @@ import { NosotrosComponent } from './screens/nosotros/nosotros.component';
 import { CarritoComprasComponent } from './screens/carrito-compras/carrito-compras.component';
 import { AdministracionComponent } from './screens/administracion/administracion.component';
 import { FormularioCelularComponent } from './components/formulario-celular/formulario-celular.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,13 +26,15 @@ import { FormularioCelularComponent } from './components/formulario-celular/form
     NosotrosComponent,
     CarritoComprasComponent,
     AdministracionComponent,
-    FormularioCelularComponent
+    FormularioCelularComponent,
+    
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule, 
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,71 @@
-<p>formulario-celular works!</p>
+<div class="container mt-4">
+  <ng-container *ngIf="celular; else nuevoCelularTemplate">
+    <!-- Content for modifying an existing celular -->
+    <h2 class="text-center mb-4">Modificar Celular</h2>
+  </ng-container>
+  <ng-template #nuevoCelularTemplate>
+    <!-- Content for adding a new celular -->
+    <h2 class="text-center mb-4">Agregar Nuevo Celular</h2>
+  </ng-template>
+    <form (ngSubmit)="onSubmit()" class="row g-3 mb-4" #myForm="ngForm">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="marca" class="form-label">Marca</label>
+          <input type="text" class="form-control" id="marca" [(ngModel)]="celularData.marca" name="marca" required>
+        </div>
+        <div class="mb-3">
+          <label for="modelo" class="form-label">Modelo</label>
+          <input type="text" class="form-control" id="modelo" [(ngModel)]="celularData.modelo" name="modelo" required>
+        </div>
+        <div class="mb-3">
+          <label for="lanzamiento" class="form-label">Año de Lanzamiento</label>
+          <input type="number" class="form-control" id="lanzamiento" [(ngModel)]="celularData.lanzamiento" name="lanzamiento" required>
+        </div>
+        <div class="mb-3">
+          <label for="pantallaTipo" class="form-label">Tipo de Pantalla</label>
+          <input type="text" class="form-control" id="pantallaTipo" [(ngModel)]="celularData.pantalla.tipo" name="pantallaTipo" required>
+        </div>
+        <div class="mb-3">
+          <label for="pantallaTamano" class="form-label">Tamaño de Pantalla</label>
+          <input type="number" class="form-control" id="pantallaTamano" [(ngModel)]="celularData.pantalla.tamano" name="pantallaTamano" required>
+        </div>
+      </div>
+  
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="resolucionCamara" class="form-label">Resolución de Cámara Principal</label>
+          <input type="text" class="form-control" id="resolucionCamara" [(ngModel)]="celularData.camara_principal.resolucion" name="resolucionCamara" required>
+        </div>
+        <div class="mb-3">
+          <label for="aperturaCamara" class="form-label">Apertura de Cámara Principal</label>
+          <input type="text" class="form-control" id="aperturaCamara" [(ngModel)]="celularData.camara_principal.apertura" name="aperturaCamara" required>
+        </div>
+        <div class="mb-3">
+          <label for="bateria" class="form-label">Capacidad de Batería</label>
+          <input type="number" class="form-control" id="bateria" [(ngModel)]="celularData.bateria" name="bateria" required>
+        </div>
+        <div class="mb-3">
+          <label for="almacenamiento" class="form-label">Capacidad de Almacenamiento</label>
+          <input type="number" class="form-control" id="almacenamiento" [(ngModel)]="celularData.almacenamiento" name="almacenamiento" required>
+        </div>
+        <div class="mb-3">
+          <label for="precio" class="form-label">Precio</label>
+          <input type="number" class="form-control" id="precio" [(ngModel)]="celularData.precio" name="precio" required>
+        </div>
+        <div class="mb-3">
+          <label for="imagenUrl" class="form-label">URL de la Imagen</label>
+          <input type="url" class="form-control" id="imagenUrl" [(ngModel)]="celularData.imagen_url" name="imagenUrl" required>
+        </div>
+      </div>
+      <div class="col-12 text-center mb-4">
+        <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Guardar</button>
+      </div>
+      <ng-container *ngIf="!myForm.valid; else datosLlenos">
+        <h2 class="text-center mb-4" style="color: rgb(204, 109, 109);">Se deben llenar todos los datos primero, boton deshabilitado</h2>
+      </ng-container>
+      <ng-template #datosLlenos>
+        <!-- Content for adding a new celular -->
+        <h2 class="text-center mb-4" style="color: rgb(34, 92, 34)">Todos los datos llenos, boton habilitado</h2>
+      </ng-template>
+    </form>
+  </div>
