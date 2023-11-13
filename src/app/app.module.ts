@@ -14,6 +14,9 @@ import { CarritoComprasComponent } from './screens/carrito-compras/carrito-compr
 import { AdministracionComponent } from './screens/administracion/administracion.component';
 import { FormularioCelularComponent } from './components/formulario-celular/formulario-celular.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Error404Component } from './screens/error404/error404.component';
+import { TerminosCondicionesComponent } from './screens/terminos-condiciones/terminos-condiciones.component';
+import { FacturaComponent } from './screens/factura/factura.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     AdministracionComponent,
     FormularioCelularComponent,
     
+    Error404Component,
+    TerminosCondicionesComponent,
+    FacturaComponent
   ],
   imports: [
     FormsModule,
