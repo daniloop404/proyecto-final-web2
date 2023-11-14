@@ -44,7 +44,7 @@ import { RegistroComponent } from './screens/registro/registro.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule, 
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
