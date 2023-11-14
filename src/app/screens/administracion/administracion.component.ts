@@ -11,10 +11,14 @@ export class AdministracionComponent {
   celularKey: string | null = null; // Define celularKey here
   dataCelulares: { [key: string]: any }[] = [];
   confirmar: boolean = false;
+  indexNumber:any;
   constructor(private servicio: CelularesService, private router: Router) {}
 
+  
   confirmarEliminar() {
     this.confirmar = !this.confirmar;
+    
+
   }
 
   ngOnInit() {

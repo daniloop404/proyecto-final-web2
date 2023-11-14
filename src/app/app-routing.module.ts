@@ -10,6 +10,7 @@ import { NosotrosComponent } from './screens/nosotros/nosotros.component';
 import { TerminosCondicionesComponent } from './screens/terminos-condiciones/terminos-condiciones.component';
 import { FacturaComponent } from './screens/factura/factura.component';
 import { Error404Component } from './screens/error404/error404.component';
+import { RegistroComponent } from './screens/registro/registro.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'formularioCelular', component:FormularioCelularComponent},
   {path: 'formularioCelular/:key', component:FormularioCelularComponent},
   {path: 'terminos-condiciones', component: TerminosCondicionesComponent},
+  {path: 'registro', component:RegistroComponent},
   {path: 'factura', component: FacturaComponent},
 
   {path:'**', component: Error404Component}

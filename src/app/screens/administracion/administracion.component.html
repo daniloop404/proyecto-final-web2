@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let celular of dataCelulares" class="text-center">
+      <tr *ngFor="let celular of dataCelulares; let i = index" class="text-center">
         <td class="align-middle">{{ celular['marca'] }}</td>
         <td class="align-middle">{{ celular['modelo'] }}</td>
         <td class="align-middle">${{ celular['precio'] }}</td>
@@ -31,8 +31,6 @@
               <button (click)="onDelete(celular['key'])" class="btn btn-danger me-2">Confirmar</button>
               <button (click)="confirmarEliminar()" class="btn btn-success me-2">Cancelar</button>
             </ng-template>
-            
-            
           </div>
         </td>
       </tr>
