@@ -11,6 +11,7 @@ import { TerminosCondicionesComponent } from './screens/terminos-condiciones/ter
 import { FacturaComponent } from './screens/factura/factura.component';
 import { Error404Component } from './screens/error404/error404.component';
 import { RegistroComponent } from './screens/registro/registro.component';
+import { LoginComponent } from './screens/login/login.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'terminos-condiciones', component: TerminosCondicionesComponent},
   {path: 'registro', component:RegistroComponent},
   {path: 'factura', component: FacturaComponent},
+  {path: 'login', component:LoginComponent},
 
   {path:'**', component: Error404Component}
 ];
