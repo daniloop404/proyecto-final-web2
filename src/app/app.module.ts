@@ -32,7 +32,6 @@ import { RegistroComponent } from './screens/registro/registro.component';
     CarritoComprasComponent,
     AdministracionComponent,
     FormularioCelularComponent,
-    
     Error404Component,
     TerminosCondicionesComponent,
     FacturaComponent,
