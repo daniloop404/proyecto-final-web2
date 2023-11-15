@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
@@ -18,25 +18,28 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  login(username: string, password: string): Observable<boolean> {
+  login(username: string, password: string): Observable<{ user: User, key: string } | null> {
     return this.http.get<any>(`${this.API_USUARIOS}.json`).pipe(
       map((users: { [key: string]: User }) => {
-        const user = Object.values(users).find(u => u.nombreUsuario === username && u.clave === password);
-
-        if (user) {
-          // Store user information in sessionStorage
-          sessionStorage.setItem('user', JSON.stringify(user));
-          return true;
-        } else {
-          return false;
+        const keys = Object.keys(users);
+        for (const key of keys) {
+          const user = users[key];
+          if (user.nombreUsuario === username && user.clave === password) {
+            // Store user information and key in sessionStorage
+            sessionStorage.setItem('user', JSON.stringify(user));
+            sessionStorage.setItem('userKey', key);
+            return { user, key };
+          }
         }
+        return null;
       })
     );
   }
 
   logout(): void {
-    // Remove user information from sessionStorage on logout
+    // Remove user information and key from sessionStorage on logout
     sessionStorage.removeItem('user');
+    sessionStorage.removeItem('userKey');
   }
 
   isAuthenticated(): boolean {
@@ -53,5 +56,10 @@ export class LoginService {
     } else {
       return null;
     }
+  }
+
+  getUserKey(): string | null {
+    // Get user key from sessionStorage
+    return sessionStorage.getItem('userKey');
   }
 }

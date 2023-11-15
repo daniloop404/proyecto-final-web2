@@ -34,7 +34,7 @@
     <div class="d-flex align-items-center">
       <a *ngIf="!loginService.isAuthenticated()" class="nav-link p-2" href="login">Iniciar Sesión</a>
       <div *ngIf="loginService.isAuthenticated(); else logoutSection">
-        <span class="mr-2">Hola, {{ loginService.getRole() }}</span>
+        <span class="mr-2">Hola, {{ loginService.getUserKey() }}</span>
         <button class="btn btn-link" (click)="logout()">Cerrar Sesión</button>
       </div>
       <ng-template #logoutSection></ng-template>
