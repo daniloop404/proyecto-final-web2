@@ -11,7 +11,7 @@
         <p>Batería: {{ celular?.bateria }} mAh</p>
         <p>Almacenamiento: {{ celular?.almacenamiento }} GB</p>
         <p>Precio: ${{ celular?.precio }}</p>
-        <button class="btn btn-primary">Agregar al carrito</button>
+        <button (click)="comprar()" class="btn btn-primary">Agregar al carrito</button>
       </div>
     </div>
   </div>
