@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -9,8 +10,8 @@ import { FormsModule } from '@angular/forms';
 export class RegistroComponent {
   nuevoUsuario = {
     nombreUsuario: '',
-    clave: '',
-    rol: 'Usuario',
+    clave: '',  // Initialize to an empty string
+    rol: 'usuario',
     nombre: '',
     direccion: '',
     telefono: '',

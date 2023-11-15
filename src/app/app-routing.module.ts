@@ -12,20 +12,23 @@ import { FacturaComponent } from './screens/factura/factura.component';
 import { Error404Component } from './screens/error404/error404.component';
 import { RegistroComponent } from './screens/registro/registro.component';
 import { LoginComponent } from './screens/login/login.component';
+import { AuthGuard } from './guards/usuarios.guard';
+import { AdminAuthGuard } from './guards/administrador.guard';
+import { NoAuthGuard } from './guards/no-auth.guard';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
-  {path:'nosotros', component:NosotrosComponent},
+  {path: 'nosotros', component:NosotrosComponent},
   {path: 'productos', component:ProductosComponent},
   {path: 'detalleProducto/:key', component:DetalleProductoComponent},
-  { path: 'carritocompras', component: CarritoComprasComponent },
-  {path: 'administracion', component:AdministracionComponent},
-  {path: 'formularioCelular', component:FormularioCelularComponent},
-  {path: 'formularioCelular/:key', component:FormularioCelularComponent},
+  {path: 'carritocompras', component: CarritoComprasComponent, canActivate: [AuthGuard] },
+  {path: 'administracion', component:AdministracionComponent, canActivate: [AdminAuthGuard]},
+  {path: 'formularioCelular', component:FormularioCelularComponent, canActivate: [AdminAuthGuard]},
+  {path: 'formularioCelular/:key', component:FormularioCelularComponent, canActivate: [AdminAuthGuard]},
   {path: 'terminos-condiciones', component: TerminosCondicionesComponent},
-  {path: 'registro', component:RegistroComponent},
-  {path: 'factura', component: FacturaComponent},
-  {path: 'login', component:LoginComponent},
+  {path: 'registro', component:RegistroComponent, canActivate: [NoAuthGuard]},
+  {path: 'factura', component: FacturaComponent, canActivate: [AuthGuard]},
+  {path: 'login', component:LoginComponent, canActivate: [NoAuthGuard]},
 
   {path:'**', component: Error404Component}
 ];
