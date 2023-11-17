@@ -64,7 +64,8 @@ export class DetalleProductoComponent implements OnInit {
       const celularForService = {
         marca: this.celular.marca,
         modelo: this.celular.modelo,
-        precio: this.celular.precio
+        precio: this.celular.precio,
+        imagen_url: this.celular.imagen_url
       };
   
       this.carrito.agregarAlCarrito(celularForService, userKey, celularKey, this.celular.unidades).subscribe(() => {
