@@ -3,6 +3,8 @@ import { CelularesService } from 'src/app/services/celulares.service';
 import { ActivatedRoute } from '@angular/router';
 import { CarritoService } from 'src/app/services/carrito.service';
 import { LoginService } from 'src/app/services/login.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-detalle-producto',
@@ -22,7 +24,8 @@ export class DetalleProductoComponent implements OnInit {
     camara_principal: { resolucion: string; apertura: string };
     bateria: number;
     almacenamiento: number;
-    key?: string; // Add the key property
+    key?: string;
+    unidades: number; // Add the key property
   } = {
     marca: '',
     modelo: '',
@@ -32,10 +35,11 @@ export class DetalleProductoComponent implements OnInit {
     pantalla: { tipo: '', tamano: 0 },
     camara_principal: { resolucion: '', apertura: '' },
     bateria: 0,
-    almacenamiento: 0
+    almacenamiento: 0,
+    unidades: 1
   };
 
-  constructor(public loginService: LoginService, private celularesService: CelularesService, private route: ActivatedRoute, private carrito: CarritoService) { }
+  constructor(public loginService: LoginService, private celularesService: CelularesService, private route: ActivatedRoute, private carrito: CarritoService, private router: Router) { }
 
   ngOnInit() {
     const key = this.route.snapshot.paramMap.get('key');
@@ -53,16 +57,24 @@ export class DetalleProductoComponent implements OnInit {
   comprar() {
     const userKey = this.loginService.getUserKey() ?? 'defaultUserKey';
   
-    // Make sure to replace 'celularkey' with the actual key property you are using for the celular
-    const celularKey = this.celular.key ?? ''; // Provide a default value
+    // Check if the user is authenticated
+    if (this.loginService.isAuthenticated()) {
+      const celularKey = this.celular.key ?? '';
   
-    // Create a new object with only the properties needed for the service
-    const celularForService = {
-      marca: this.celular.marca,
-      modelo: this.celular.modelo,
-      precio: this.celular.precio
-    };
+      const celularForService = {
+        marca: this.celular.marca,
+        modelo: this.celular.modelo,
+        precio: this.celular.precio
+      };
   
-    this.carrito.agregarAlCarrito(celularForService, userKey, celularKey).subscribe();
+      this.carrito.agregarAlCarrito(celularForService, userKey, celularKey, this.celular.unidades).subscribe(() => {
+        // Redirect to the carritoCompras component
+        // Use Angular Router to navigate
+        this.router.navigate(['/carritoCompras']);
+      });
+    } else {
+      // User is not authenticated, redirect to login
+      this.router.navigate(['/login']);
+    }
   }
 }

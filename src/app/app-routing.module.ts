@@ -21,7 +21,7 @@ const routes: Routes = [
   {path: 'nosotros', component:NosotrosComponent},
   {path: 'productos', component:ProductosComponent},
   {path: 'detalleProducto/:key', component:DetalleProductoComponent},
-  {path: 'carritocompras', component: CarritoComprasComponent, canActivate: [AuthGuard] },
+  {path: 'carritoCompras', component: CarritoComprasComponent, canActivate: [AuthGuard] },
   {path: 'administracion', component:AdministracionComponent, canActivate: [AdminAuthGuard]},
   {path: 'formularioCelular', component:FormularioCelularComponent, canActivate: [AdminAuthGuard]},
   {path: 'formularioCelular/:key', component:FormularioCelularComponent, canActivate: [AdminAuthGuard]},
