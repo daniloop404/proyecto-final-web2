@@ -18,4 +18,8 @@ export class UsuariosService {
     const url = `${this.API_USUARIOS}.json`;
     return this.http.post(url, nuevoUsuario);
   }
+  getUsuarioPorId(key: string): Observable<any> {
+    const url = `${this.API_USUARIOS}/${key}.json`;
+    return this.http.get(url);
+  }
 }
