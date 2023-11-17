@@ -39,20 +39,25 @@ export class DetalleProductoComponent implements OnInit {
     unidades: 1
   };
 
-  constructor(public loginService: LoginService, private celularesService: CelularesService, private route: ActivatedRoute, private carrito: CarritoService, private router: Router) { }
+  constructor(public loginService: LoginService, 
+    private celularesService: CelularesService, 
+    private route: ActivatedRoute, 
+    private carrito: CarritoService, 
+    private router: Router) 
+    { }
 
-  ngOnInit() {
-    const key = this.route.snapshot.paramMap.get('key');
-    if (key) {
-      this.celularesService.getCelulares().subscribe(celulares => {
-        const celular = celulares.find(c => c.key === key);
-        if (celular) {
-          // Assign the key property
-          this.celular = { ...celular, key: celular.key ?? '' }; // Use '' or another default value
-        }
-      });
+    ngOnInit() {
+      const key = this.route.snapshot.paramMap.get('key');
+      if (key) {
+        this.celularesService.getCelulares().subscribe(celulares => {
+          const celular = celulares.find(c => c.key === key);
+          if (celular) {
+            this.celular = { ...celular, key: celular.key ?? '' };
+            this.celular.unidades = 1;
+          }
+        });
+      }
     }
-  }
   
   comprar() {
     const userKey = this.loginService.getUserKey() ?? 'defaultUserKey';
