@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CarritoService } from 'src/app/services/carrito.service';
+import { FacturaService } from 'src/app/services/factura.service';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-carrito-compras',
@@ -11,7 +13,11 @@ export class CarritoComprasComponent implements OnInit {
   carritoData: any[] = []; // Array to store cart items
   isCartEmpty: boolean = true; // Flag to check if the cart is empty
 
-  constructor(private carritoService: CarritoService) { }
+  constructor(
+    private carritoService: CarritoService,
+    private facturaService: FacturaService,
+    private usuariosService: UsuariosService
+  ) { }
 
   ngOnInit() {
     const userKey = sessionStorage.getItem('userKey') || 'defaultUserKey';
@@ -37,10 +43,34 @@ export class CarritoComprasComponent implements OnInit {
         this.realizarPedido();
     }
 }
-  realizarPedido() {
-    // Implement the logic for placing an order
-    // Redirect or show a confirmation message
-  }
+realizarPedido() {
+  const userKey = sessionStorage.getItem('userKey') || 'defaultUserKey';
+
+  // Fetch user information
+  this.usuariosService.getUsuarioPorId(userKey).subscribe((userData: any) => {
+    // Construct the facturaData with the current date
+    const facturaData = {
+      usuario: {
+        nombre: userData.nombre,
+        telefono: userData.telefono,
+        direccion: userData.direccion,
+        correo: userData.correo
+      },
+      carrito: this.carritoData,
+      total: this.calcularCostoTotal(),
+      fecha: new Date().toISOString() // Add the current date in ISO format
+    };
+
+    // Save the factura
+    this.facturaService.agregarFactura(userKey, facturaData).subscribe(() => {
+      // Clear the carrito
+      this.carritoService.eliminarDelCarrito(userKey, '').subscribe(() => {
+        // Update the cart data after removing the items
+        this.ngOnInit();
+      });
+    });
+  });
+}
 
   actualizarUnidades(item: any) {
     const userKey = sessionStorage.getItem('userKey') || 'defaultUserKey';
