@@ -27,6 +27,7 @@ export class AdministracionComponent {
     });
   }
 
+  
   onDelete(celularKey: string | null): void {
     if (celularKey) {
       this.servicio.deleteCelular(celularKey).subscribe(

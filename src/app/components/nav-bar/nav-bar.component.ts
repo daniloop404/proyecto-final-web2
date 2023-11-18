@@ -7,11 +7,13 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent {
+  
   constructor(public loginService: LoginService, private router: Router) { }
 
   logout(): void {
     this.loginService.logout();
     this.router.navigate(['/']);
+    
   }
 
 }

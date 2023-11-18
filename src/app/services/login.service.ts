@@ -28,6 +28,7 @@ export class LoginService {
             // Store user information and key in sessionStorage
             sessionStorage.setItem('user', JSON.stringify(user));
             sessionStorage.setItem('userKey', key);
+            
             return { user, key };
           }
         }
@@ -57,7 +58,16 @@ export class LoginService {
       return null;
     }
   }
-
+  getnombre(): string | null {
+    // Get user information from sessionStorage and extract name
+    const userString = sessionStorage.getItem('user');
+    if (userString) {
+      const user: User = JSON.parse(userString);
+      return user.nombreUsuario;
+    } else {
+      return null;
+    }
+  }
   getUserKey(): string | null {
     // Get user key from sessionStorage
     return sessionStorage.getItem('userKey');
