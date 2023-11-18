@@ -64,9 +64,10 @@ realizarPedido() {
     // Save the factura
     this.facturaService.agregarFactura(userKey, facturaData).subscribe(() => {
       // Clear the carrito
-      this.carritoService.eliminarDelCarrito(userKey, '').subscribe(() => {
+      this.carritoService.eliminarCarrito(userKey).subscribe(() => {
         // Update the cart data after removing the items
         this.ngOnInit();
+        window.location.reload();
       });
     });
   });

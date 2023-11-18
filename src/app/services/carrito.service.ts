@@ -55,4 +55,9 @@ export class CarritoService {
       })
     );
   }
+  eliminarCarrito(userKey: string): Observable<any> {
+    const url = `${this.API_CARRITO}/${userKey}/carrito.json`;
+    return this.http.delete(url);
+  }
+  
 }
