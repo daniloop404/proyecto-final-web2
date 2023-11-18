@@ -3,7 +3,6 @@ import { LoginService } from 'src/app/services/login.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 export class LoginComponent {
   username: string = '';
   password: string = '';
+  errorMessage: string = ''; // Add this variable
 
   constructor(private loginService: LoginService, private router: Router) { }
 
@@ -27,10 +27,10 @@ export class LoginComponent {
         } else if (userRole === 'administrador') {
           this.router.navigate(['/']);
           // Redirect to administrador-specific route
-
         }
       } else {
         // Handle login failure
+        this.errorMessage = 'Usuario o contraseña incorrecto'; // Set the error message
         console.log('Login failed');
       }
     });

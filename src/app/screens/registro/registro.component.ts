@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
-import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
 export class RegistroComponent {
   nuevoUsuario = {
     nombreUsuario: '',
-    clave: '',  // Initialize to an empty string
+    clave: '',
     rol: 'usuario',
     nombre: '',
     direccion: '',
@@ -18,15 +18,22 @@ export class RegistroComponent {
     correo: ''
   };
 
-  constructor(private usuariosService: UsuariosService) {}
+  // Inject the Router service in the constructor
+  constructor(private usuariosService: UsuariosService, private router: Router) {}
 
   onSubmit() {
-    // Call the service method to post the user
     this.usuariosService.postUsuario(this.nuevoUsuario).subscribe(
       (response) => {
         console.log('Usuario registrado:', response);
+
+        // Show success message to the user
+        alert('Usuario registrado exitosamente, ahora puedes iniciar sesion');
+
         // Optionally, you can reset the form here
         // this.nuevoUsuario = { nombreUsuario: '', clave: '', rol: '', nombre: '', direccion: '', telefono: '', correo: '' };
+
+        // Redirect to the login page
+        this.router.navigate(['/login']);
       },
       (error) => {
         console.error('Error al registrar usuario:', error);

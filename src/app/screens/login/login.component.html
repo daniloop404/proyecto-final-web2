@@ -24,6 +24,7 @@
                   </form>
               </div>
           </div>
+          <div *ngIf="errorMessage" class="text-center mt-3 text-danger">{{ errorMessage }}</div>
           <!-- Additional text and link -->
           <p class="text-center mt-3">¿No tienes cuenta? <a href="/registro">Presiona aquí</a></p>
       </div>
