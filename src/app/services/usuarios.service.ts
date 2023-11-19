@@ -22,4 +22,8 @@ export class UsuariosService {
     const url = `${this.API_USUARIOS}/${key}.json`;
     return this.http.get(url);
   }
+  putUsuario(key: string, usuario: any): Observable<any> {
+    const url = `${this.API_USUARIOS}/${key}.json`;
+    return this.http.put(url, usuario);
+  }
 }
