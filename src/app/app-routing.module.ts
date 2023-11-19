@@ -8,13 +8,14 @@ import { FormularioCelularComponent } from './components/formulario-celular/form
 import { HomeComponent } from './screens/home/home.component';
 import { NosotrosComponent } from './screens/nosotros/nosotros.component';
 import { TerminosCondicionesComponent } from './screens/terminos-condiciones/terminos-condiciones.component';
-import { FacturaComponent } from './screens/factura/factura.component';
 import { Error404Component } from './screens/error404/error404.component';
 import { RegistroComponent } from './screens/registro/registro.component';
 import { LoginComponent } from './screens/login/login.component';
 import { UsuarioAuthGuard } from './guards/usuarios.guard';
 import { AdminAuthGuard } from './guards/administrador.guard';
 import { NoAuthGuard } from './guards/no-auth.guard';
+import { HistorialComprasComponent } from './screens/historial-compras/historial-compras.component';
+import { PerfilComponent } from './screens/perfil/perfil.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -27,8 +28,9 @@ const routes: Routes = [
   {path: 'formularioCelular/:key', component:FormularioCelularComponent, canActivate: [AdminAuthGuard]},
   {path: 'terminos-condiciones', component: TerminosCondicionesComponent},
   {path: 'registro', component:RegistroComponent, canActivate: [NoAuthGuard]},
-  {path: 'factura', component: FacturaComponent, canActivate: [UsuarioAuthGuard]},
   {path: 'login', component:LoginComponent, canActivate: [NoAuthGuard]},
+  {path: 'historialCompras', component:HistorialComprasComponent, canActivate: [UsuarioAuthGuard]},
+  {path: 'perfil', component:PerfilComponent, canActivate: [UsuarioAuthGuard]},
 
   {path:'**', component: Error404Component}
 ];

@@ -1,0 +1,27 @@
+<div class="container mt-4">
+    <h2>Historial de Compras</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Total</th>
+          <th>Dirección</th>
+          <th>Factura</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let factura of facturas">
+          <td>{{ factura.fecha | date: 'medium' }}</td>
+          <td>{{ factura.total | currency }}</td>
+          <td>{{ factura.usuario.direccion }}</td>
+          <td class="text-center"> <!-- Add text-center class to center the content -->
+            <a (click)="downloadPdf(factura)" class="pdf-icon-link">
+              <div class="pdf-icon-container">
+                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+              </div>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

@@ -6,8 +6,8 @@
     <div class="col-md-6">
       <h2>{{ celular.marca }} {{ celular.modelo }}</h2>
       <p>Lanzamiento: {{ celular.lanzamiento }}</p>
-      <p>Pantalla: {{ celular.pantalla?.tipo }} - {{ celular.pantalla?.tamano }} pulgadas</p>
-      <p>Cámara Principal: {{ celular.camara_principal?.resolucion }}, Apertura: {{ celular.camara_principal?.apertura }}</p>
+      <p>Pantalla: {{ celular.pantalla.tipo }} - {{ celular.pantalla.tamano }} pulgadas</p>
+      <p>Cámara Principal: {{ celular.camara_principal.resolucion }}, Apertura: {{ celular.camara_principal.apertura }}</p>
       <p>Batería: {{ celular.bateria }} mAh</p>
       <p>Almacenamiento: {{ celular.almacenamiento }} GB</p>
       <p>Precio: ${{ celular.precio }}</p>

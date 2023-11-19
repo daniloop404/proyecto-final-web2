@@ -16,9 +16,10 @@ import { FormularioCelularComponent } from './components/formulario-celular/form
 import { ReactiveFormsModule } from '@angular/forms';
 import { Error404Component } from './screens/error404/error404.component';
 import { TerminosCondicionesComponent } from './screens/terminos-condiciones/terminos-condiciones.component';
-import { FacturaComponent } from './screens/factura/factura.component';
 import { LoginComponent } from './screens/login/login.component';
 import { RegistroComponent } from './screens/registro/registro.component';
+import { HistorialComprasComponent } from './screens/historial-compras/historial-compras.component';
+import { PerfilComponent } from './screens/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -34,9 +35,10 @@ import { RegistroComponent } from './screens/registro/registro.component';
     FormularioCelularComponent,
     Error404Component,
     TerminosCondicionesComponent,
-    FacturaComponent,
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    HistorialComprasComponent,
+    PerfilComponent
   ],
   imports: [
     FormsModule,

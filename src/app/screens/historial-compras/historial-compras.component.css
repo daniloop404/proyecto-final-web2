@@ -1,0 +1,14 @@
+.pdf-icon-link {
+    cursor: pointer;
+    display: flex;
+    align-items: center; /* Center vertically */
+  }
+  
+  .pdf-icon-container {
+    font-size: 40px; /* Adjust the size to your preference */
+    transition: transform 0.2s; /* Add a smooth transition effect */
+  }
+  
+  .pdf-icon-link:hover .pdf-icon-container {
+    transform: scale(1.2); /* Increase the size on hover */
+  }
