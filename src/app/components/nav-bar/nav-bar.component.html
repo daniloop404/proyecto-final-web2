@@ -41,8 +41,8 @@
             Hola, {{ loginService.getnombre() }}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="perfil">Perfil</a>
-            <a class="dropdown-item" href="historialCompras">Facturas</a>
+            <a *ngIf="loginService.getRole() !== 'administrador'" class="dropdown-item" href="perfil">Perfil</a>
+            <a *ngIf="loginService.getRole() !== 'administrador'" class="dropdown-item" href="historialCompras">Facturas</a>
             <div class="dropdown-divider"></div>
             <button class="dropdown-item" (click)="logout()">Cerrar Sesión</button>
           </div>
