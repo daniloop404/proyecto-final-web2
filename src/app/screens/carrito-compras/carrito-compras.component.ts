@@ -75,8 +75,8 @@ realizarPedido() {
 
   actualizarUnidades(item: any) {
     const userKey = sessionStorage.getItem('userKey') || 'defaultUserKey';
-  
-    this.carritoService.agregarAlCarrito(item.info, userKey, item.key, item.unidades).subscribe(() => {
+    const lugar = 'carrito'
+    this.carritoService.agregarAlCarrito(item.info, userKey, item.key, item.unidades,lugar).subscribe(() => {
       // Update the current item's subtotal and units
       item.subtotal = item.info.precio * item.unidades;
       

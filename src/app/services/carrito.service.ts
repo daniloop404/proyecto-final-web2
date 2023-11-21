@@ -17,14 +17,19 @@ export class CarritoService {
     return this.http.get(url);
   }
 
-  agregarAlCarrito(celular: any, userKey: string, celularKey: string, unidades: number): Observable<any> {
+  agregarAlCarrito(celular: any, userKey: string, celularKey: string, unidades: number, pagina: string): Observable<any> {
     return this.getCarrito(userKey).pipe(
       switchMap((existingCarrito: any) => {
         let updatedCarrito = existingCarrito && existingCarrito.carrito ? existingCarrito.carrito : {};
   
         if (updatedCarrito[celularKey]) {
+
+          if (pagina==='detalle'){
+            updatedCarrito[celularKey].unidades += unidades;
+          }else{
+            updatedCarrito[celularKey].unidades = unidades;
+          }
           // Set the new quantity instead of adding to the existing quantity
-          updatedCarrito[celularKey].unidades = unidades;
         } else {
           // Celular doesn't exist in the cart, add it with the specified quantity
           updatedCarrito[celularKey] = { unidades: unidades, info: celular };

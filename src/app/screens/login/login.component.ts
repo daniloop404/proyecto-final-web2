@@ -22,6 +22,7 @@ export class LoginComponent {
         // Redirect based on the user's role
         const userRole = this.loginService.getRole();
         if (userRole === 'usuario') {
+          window.location.reload()
           // Redirect to usuario-specific route
           this.router.navigate(['/']);
         } else if (userRole === 'administrador') {

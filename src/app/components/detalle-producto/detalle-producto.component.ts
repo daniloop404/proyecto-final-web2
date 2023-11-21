@@ -73,8 +73,8 @@ export class DetalleProductoComponent implements OnInit {
         precio: this.celular.precio,
         imagen_url: this.celular.imagen_url
       };
-  
-      this.carrito.agregarAlCarrito(celularForService, userKey, celularKey, this.celular.unidades).subscribe(() => {
+      const lugar = 'detalle';
+      this.carrito.agregarAlCarrito(celularForService, userKey, celularKey, this.celular.unidades,lugar).subscribe(() => {
         // Redirect to the carritoCompras component
         // Use Angular Router to navigate
         this.router.navigate(['/carritoCompras']);

@@ -1,37 +1,59 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
 import { CarritoService } from 'src/app/services/carrito.service';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
-export class NavBarComponent implements OnInit {
+export class NavBarComponent implements OnInit, OnDestroy {
   isCartEmpty = true;
+  private cartSubscription!: Subscription;
 
-  constructor(public loginService: LoginService, private carritoService: CarritoService) { }
+  constructor(
+    public loginService: LoginService,
+    private carritoService: CarritoService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    // Call a method to check if the cart is empty when the component initializes
-    this.checkCartEmpty();
+  this.checkCartEmpty();
+}
+
+  ngOnDestroy(): void {
+    if (this.cartSubscription) {
+      this.cartSubscription.unsubscribe();
+    }
   }
 
   logout(): void {
     this.loginService.logout();
-    // Redirect to the home page or any other desired page after logout
+    this.isCartEmpty = true; // Set to true when logging out
+    this.router.navigate(['/']);
   }
 
   checkCartEmpty(): void {
-    // Get the user key from the login service
     const userKey = this.loginService.getUserKey();
 
     if (userKey) {
-      // Check the cart using the CarritoService
-      this.carritoService.getCarrito(userKey).subscribe((carrito) => {
-        // Update the isCartEmpty property based on whether the cart is empty or not
-        this.isCartEmpty = !carrito || !carrito.carrito || Object.keys(carrito.carrito).length === 0;
-      });
+      this.cartSubscription = this.carritoService
+        .getCarrito(userKey)
+        .subscribe((carrito) => {
+          this.isCartEmpty =
+            !carrito || !carrito.carrito || Object.keys(carrito.carrito).length === 0;
+        });
+    } else {
+      this.isCartEmpty = true; // Set to true if no user key is available
     }
+  }
+
+  addToCart(): void {
+    // Your logic to add an item to the cart
+
+    // Update isCartEmpty immediately
+    this.isCartEmpty = false;
   }
 }
