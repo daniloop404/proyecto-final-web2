@@ -56,12 +56,12 @@
               <!-- Display a message if the form is not valid -->
               <ng-container *ngIf="!registroForm.form.valid; else datosLlenos">
                 <h2 class="text-center mb-4" style="color: rgb(204, 109, 109);">
-                  Se deben llenar todos los datos primero, el botón está deshabilitado.
+                  Se deben llenar todos los datos.
                 </h2>
               </ng-container>
               <ng-template #datosLlenos>
                 <h2 class="text-center mb-4" style="color: rgb(34, 92, 34)">
-                  Todos los datos están llenos, el botón está habilitado.
+                  Todos los datos llenos.
                 </h2>
               </ng-template>
             </form>

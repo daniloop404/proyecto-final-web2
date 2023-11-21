@@ -61,11 +61,11 @@
         <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Guardar</button>
       </div>
       <ng-container *ngIf="!myForm.valid; else datosLlenos">
-        <h2 class="text-center mb-4" style="color: rgb(204, 109, 109);">Se deben llenar todos los datos primero, boton deshabilitado</h2>
+        <h2 class="text-center mb-4" style="color: rgb(204, 109, 109);">Se deben llenar todos los datos.</h2>
       </ng-container>
       <ng-template #datosLlenos>
         <!-- Content for adding a new celular -->
-        <h2 class="text-center mb-4" style="color: rgb(34, 92, 34)">Todos los datos llenos, boton habilitado</h2>
+        <h2 class="text-center mb-4" style="color: rgb(34, 92, 34)">Todos los datos llenos</h2>
       </ng-template>
     </form>
   </div>
