@@ -4,6 +4,7 @@
       <img src="{{ celular.imagen_url }}" class="img-fluid" alt="{{ celular.modelo }}" style="max-height: 400px;">
     </div>
     <div class="col-md-6">
+      
       <h2>{{ celular.marca }} {{ celular.modelo }}</h2>
       <p>Lanzamiento: {{ celular.lanzamiento }}</p>
       <p>Pantalla: {{ celular.pantalla.tipo }} - {{ celular.pantalla.tamano }} pulgadas</p>
@@ -12,7 +13,8 @@
       <p>Almacenamiento: {{ celular.almacenamiento }} GB</p>
       <p>Precio: ${{ celular.precio }}</p>
       <p>Cantidad: <input type="number" [(ngModel)]="celular.unidades" min="1" max="10"></p>
-      <button (click)="comprar()" class="btn btn-primary">Agregar al carrito</button>
+      <button (click)="comprar()" class="btn btn-primary"[disabled]="isAdmind">Agregar al carrito</button>
+    
     </div>
   </div>
 </div>

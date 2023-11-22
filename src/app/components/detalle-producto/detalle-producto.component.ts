@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 
 export class DetalleProductoComponent implements OnInit {
+  isAdmind:Boolean=false;
 
   celular: {
     marca: string;
@@ -48,6 +49,7 @@ export class DetalleProductoComponent implements OnInit {
 
   ngOnInit() {
     const key = this.route.snapshot.paramMap.get('key');
+    this.isAdmind= this.loginService.getRole()==='administrador';
     if (key) {
       this.celularesService.getCelulares().subscribe(celulares => {
         const celular = celulares.find(c => c.key === key);
@@ -62,6 +64,7 @@ export class DetalleProductoComponent implements OnInit {
   
   comprar() {
     const userKey = this.loginService.getUserKey() ?? 'defaultUserKey';
+
   
     // Check if the user is authenticated
     if (this.loginService.isAuthenticated()) {
