@@ -1,49 +1,54 @@
 <div class="container mt-4">
-    <h1 class="text-center">Carrito de Compras</h1>
+  <h1 class="text-center">Carrito de Compras</h1>
 
-    
-    <div class="row mt-4" *ngIf="carritoData.length > 0">
-        <div class="col-md-12 mb-4" *ngFor="let item of carritoData">
-        <div class="card">
-          <div class="row no-gutters">
-            <div class="col-md-4 mt-2 mb-2">
-              <img [src]="item.info.imagen_url" class="card-img" alt="{{ item.info.modelo }}">
-            </div>
-            <div class="col-md-4">
-              <div class="card-body">
-                <h5 class="card-title">{{ item.info.marca }} {{ item.info.modelo }}</h5>
-                <p class="card-text">Precio: ${{ item.info.precio }}</p>
-                <p class="card-text">Cantidad: 
-                    <input type="number" [(ngModel)]="item.unidades" min="1" max="10" (change)="actualizarUnidades(item)" />
-                </p>
-                
-              </div>
-            </div>
-            <div class="col-md-4 mt-4">
-               
-                <p class="card-text">Subtotal: ${{ item.subtotal | number: '1.2-2' }}</p>
-                <button class="btn btn-danger" (click)="eliminarItem(item.key)">Eliminar</button>
+
+  <div class="row mt-4" *ngIf="carritoData.length > 0">
+    <div class="col-md-12 mb-4" *ngFor="let item of carritoData">
+      <div class="card">
+        <div class="row no-gutters">
+          <div class="col-md-4 mt-2 mb-2">
+            <img [src]="item.info.imagen_url" class="card-img" alt="{{ item.info.modelo }}">
+          </div>
+          <div class="col-md-4">
+            <div class="card-body">
+              <h5 class="card-title">{{ item.info.marca }} {{ item.info.modelo }}</h5>
+              <p class="card-text">Precio: ${{ item.info.precio }}</p>
+              <p class="card-text">Cantidad:
+                <input type="number" [(ngModel)]="item.unidades" min="1" max="10" (change)="actualizarUnidades(item)" />
+              </p>
+
             </div>
           </div>
+          <div class="col-md-4 mt-4">
+
+            <p class="card-text">Subtotal: ${{ item.subtotal | number: '1.2-2' }}</p>
+            <button class="btn btn-danger" (click)="eliminarItem(item.key)">Eliminar</button>
+          </div>
+        </div>
+        <div class="col-md-4 mt-4">
+
+          <p class="card-text">Subtotal: ${{ item.subtotal | number: '1.2-2' }}</p>
+          <button class="btn btn-danger" (click)="eliminarItem(item.key)">Eliminar</button>
         </div>
       </div>
     </div>
-    <div class="row mt-4" *ngIf="carritoData.length === 0">
-        <div class="col-md-12 text-center">
-          <p>El carrito está vacío. Revisa nuestra selección y llénalo.</p>
-        </div>
-      </div>
-    <!-- Botón Realizar Pedido -->
-    <div class="row mt-4" *ngIf="carritoData.length > 0">
-        <div class="col-md-12 text-center">
-            <button class="btn btn-primary" (click)="confirmRealizarPedido()">Realizar Pedido</button>
-        </div>
-    </div>
-  
-    <!-- Costo Total -->
-    <div class="row mt-4" *ngIf="carritoData.length > 0">
-        <div class="col-md-12 text-center">
-          <h4>Costo Total con IVA (12%): ${{ calcularCostoTotal() | number: '1.2-2' }}</h4>
-        </div>
-      </div>
   </div>
+  <div class="row mt-4" *ngIf="carritoData.length === 0">
+    <div class="col-md-12 text-center">
+      <p>El carrito está vacío. Revisa nuestra selección y llénalo.</p>
+    </div>
+  </div>
+  <!-- Botón Realizar Pedido -->
+  <div class="row mt-4" *ngIf="carritoData.length > 0">
+    <div class="col-md-12 text-center">
+      <button class="btn btn-primary" (click)="confirmRealizarPedido()">Realizar Pedido</button>
+    </div>
+  </div>
+
+  <!-- Costo Total -->
+  <div class="row mt-4" *ngIf="carritoData.length > 0">
+    <div class="col-md-12 text-center">
+      <h4>Costo Total con IVA (12%): ${{ calcularCostoTotal() | number: '1.2-2' }}</h4>
+    </div>
+  </div>
+</div>

@@ -4,29 +4,37 @@ import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CarritoService {
+  private API_CARRITO =
+    'https://app-web-2-d5607-default-rtdb.firebaseio.com/usuarios';
 
-  private API_CARRITO = "https://app-web-2-d5607-default-rtdb.firebaseio.com/usuarios";
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getCarrito(userKey: string): Observable<any> {
     const url = `${this.API_CARRITO}/${userKey}.json`;
     return this.http.get(url);
   }
 
-  agregarAlCarrito(celular: any, userKey: string, celularKey: string, unidades: number, pagina: string): Observable<any> {
+  agregarAlCarrito(
+    celular: any,
+    userKey: string,
+    celularKey: string,
+    unidades: number,
+    pagina: string
+  ): Observable<any> {
     return this.getCarrito(userKey).pipe(
       switchMap((existingCarrito: any) => {
-        let updatedCarrito = existingCarrito && existingCarrito.carrito ? existingCarrito.carrito : {};
-  
-        if (updatedCarrito[celularKey]) {
+        let updatedCarrito =
+          existingCarrito && existingCarrito.carrito
+            ? existingCarrito.carrito
+            : {};
 
-          if (pagina==='detalle'){
+        if (updatedCarrito[celularKey]) {
+          if (pagina === 'detalle') {
             updatedCarrito[celularKey].unidades += unidades;
-          }else{
+          } else {
             updatedCarrito[celularKey].unidades = unidades;
           }
           // Set the new quantity instead of adding to the existing quantity
@@ -34,7 +42,7 @@ export class CarritoService {
           // Celular doesn't exist in the cart, add it with the specified quantity
           updatedCarrito[celularKey] = { unidades: unidades, info: celular };
         }
-  
+
         const url = `${this.API_CARRITO}/${userKey}.json`;
         return this.http.patch(url, { carrito: updatedCarrito });
       })
@@ -44,12 +52,15 @@ export class CarritoService {
   eliminarDelCarrito(userKey: string, celularKey: string): Observable<any> {
     return this.getCarrito(userKey).pipe(
       switchMap((existingCarrito: any) => {
-        let updatedCarrito = existingCarrito && existingCarrito.carrito ? existingCarrito.carrito : {};
-  
+        let updatedCarrito =
+          existingCarrito && existingCarrito.carrito
+            ? existingCarrito.carrito
+            : {};
+
         if (updatedCarrito[celularKey]) {
           // Remove the item from the cart
           delete updatedCarrito[celularKey];
-  
+
           // Update the cart in the database
           const url = `${this.API_CARRITO}/${userKey}.json`;
           return this.http.patch(url, { carrito: updatedCarrito });
@@ -64,5 +75,4 @@ export class CarritoService {
     const url = `${this.API_CARRITO}/${userKey}/carrito.json`;
     return this.http.delete(url);
   }
-  
 }
