@@ -4,13 +4,13 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CelularesService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  private API_CELULARES = "https://app-web-2-d5607-default-rtdb.firebaseio.com/celulares";
+  private API_CELULARES =
+    'https://app-web-2-d5607-default-rtdb.firebaseio.com/celulares';
 
   getCelulares(): Observable<any[]> {
     const url = `${this.API_CELULARES}.json`;
@@ -19,11 +19,10 @@ export class CelularesService {
         if (!data) {
           return [];
         }
-        return Object.keys(data).map(key => ({ key, ...data[key] }));
+        return Object.keys(data).map((key) => ({ key, ...data[key] }));
       })
     );
   }
-
 
   getCelularPorId(key: string): Observable<any> {
     const url = `${this.API_CELULARES}/${key}.json`;
@@ -43,5 +42,14 @@ export class CelularesService {
   deleteCelular(key: string): Observable<any> {
     const url = `${this.API_CELULARES}/${key}.json`;
     return this.http.delete(url);
+  }
+
+  getCelularesPorMarca(marca: String): Observable<any[]> {
+    const url = `${this.API_CELULARES}.json`;
+    return this.http.get(url).pipe(
+        map((data) =>
+          Object.values(data).filter((celular) => celular.marca === marca)
+        )
+      );
   }
 }
