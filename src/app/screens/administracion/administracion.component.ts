@@ -9,15 +9,15 @@ import { Router } from '@angular/router'; // Import Router
 })
 export class AdministracionComponent {
   celularKey: string | null = null; // Define celularKey here
-  dataCelulares: { [key: string]: any }[] = [];
-  confirmar: boolean = false;
+  dataCelulares: { [key: string]: any, confirmar: boolean }[] = [];
+  //confirmar: boolean = false;
   indexNumber:any;
   constructor(private servicio: CelularesService, private router: Router) {}
 
   
-  confirmarEliminar() {
-    this.confirmar = !this.confirmar;
-    
+  confirmarEliminar(celular:any) {
+    //this.confirmar = !this.confirmar;
+    celular.confirmar = !celular.confirmar;
 
   }
 

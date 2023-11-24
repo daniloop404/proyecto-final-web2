@@ -23,13 +23,13 @@
         </td>
         <td class="align-middle">
           <div class="text-center">
-            <ng-container *ngIf="!confirmar; else confirmacion">
-              <button class="btn btn-danger me-2" (click)="confirmarEliminar()">Eliminar</button>
+            <ng-container *ngIf="!celular.confirmar; else confirmacion">
+              <button class="btn btn-danger me-2" (click)="confirmarEliminar(celular)">Eliminar</button>
               <button [routerLink]="['/formularioCelular', celular['key']]" class="btn btn-warning">Modificar</button>
             </ng-container>
             <ng-template #confirmacion>
               <button (click)="onDelete(celular['key'])" class="btn btn-danger me-2">Confirmar</button>
-              <button (click)="confirmarEliminar()" class="btn btn-success me-2">Cancelar</button>
+              <button (click)="confirmarEliminar(celular)" class="btn btn-success me-2">Cancelar</button>
             </ng-template>
           </div>
         </td>
