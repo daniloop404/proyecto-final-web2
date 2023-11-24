@@ -44,12 +44,15 @@ export class CelularesService {
     return this.http.delete(url);
   }
 
-  getCelularesPorMarca(marca: String): Observable<any[]> {
+  getCelularesPorMarca(marca: string): Observable<any[]> {
     const url = `${this.API_CELULARES}.json`;
     return this.http.get(url).pipe(
-        map((data) =>
-          Object.values(data).filter((celular) => celular.marca === marca)
-        )
-      );
+      map((data) =>
+        Object.entries(data).map(([key, value]) => ({
+          key,
+          ...value,
+        })).filter((celular) => celular.marca === marca)
+      )
+    );
   }
 }

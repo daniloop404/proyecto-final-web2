@@ -10,10 +10,11 @@ export class ProductosComponent {
   constructor(private servicio: CelularesService) {}
   dataCelulares: { [key: string]: any }[] = [];
   celularesPorMarca: any[] = [];
+  mostrarAll = false;
 
   ngOnInit() {
     this.cargarCelulares();
-    this.cargarCelularesPorMarca('Apple');
+    this.mostrarAll = true;
   }
 
   cargarCelulares(): void {
@@ -25,20 +26,15 @@ export class ProductosComponent {
     });
   }
 
-  marcaSeleccionada(marca: string): void{
+  marcaClickeada(marca: string): void {
     this.cargarCelularesPorMarca(marca);
+    console.log(marca);
+    this.mostrarAll = false;
   }
 
-  cargarCelularesPorMarca(marca: string):void{
-    this.servicio.getCelularesPorMarca(marca).subscribe(data => {
+  cargarCelularesPorMarca(marca: string): void {
+    this.servicio.getCelularesPorMarca(marca).subscribe((data) => {
       this.celularesPorMarca = data;
     });
-  }
-
-  
-    
-  mostrarAll = false;
-  allCelulares() {
-    this.mostrarAll = !this.mostrarAll;
   }
 }

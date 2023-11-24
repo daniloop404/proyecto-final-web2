@@ -12,7 +12,8 @@
       <p>Almacenamiento: {{ celular.almacenamiento }} GB</p>
       <p>Precio: ${{ celular.precio }}</p>
       <p>Cantidad: <input type="number" [(ngModel)]="celular.unidades" min="1" max="10"></p>
-      <button (click)="comprar()" class="btn btn-primary">Agregar al carrito</button>
+      <button *ngIf="loginService.getRole() !== 'administrador'" (click)="comprar()" class="btn btn-primary">Agregar al carrito</button>
     </div>
   </div>
 </div>
+<ng-template #logoutSection></ng-template>
